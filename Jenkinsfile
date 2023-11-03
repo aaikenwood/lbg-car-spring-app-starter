@@ -10,15 +10,5 @@ pipeline {
                     scm: [ $class : 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'frontend']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aaikenwood/lbg-car-react-starter.git']]]
             }
         }
-        stage('Test and build spring backend') {
-            steps {
-
-            }
-        }
-        stage('Test and build react frontend') {
-            steps {
-                
-            }
-        }
     }
 }
