@@ -1,14 +1,14 @@
 #Stage 1
-FROM mysql:8 AS build
+FROM maven AS build
 
-WORKDIR /app
+COPY src /home/app/src
 
-COPY pom.xml .
+COPY pom.xml /home/app
 
-RUN mvn install
+RUN mvn -f /home/app/pom.xml clean package
 
-COPY . .
-
-RUN mvn clean compile
-
+#Stage 2
+FROM ubuntu/jre
+COPY --from=build /home/app/target/*.jar
 EXPOSE 8000
+ENTRYPOINT ["java", "-jar", "/usr/local/lib/demo.jar"]
