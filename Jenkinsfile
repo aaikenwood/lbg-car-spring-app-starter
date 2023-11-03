@@ -11,10 +11,14 @@ pipeline {
             }
         }
         stage('Test and build spring backend') {
+            steps {
 
+            }
         }
         stage('Test and build react frontend') {
-
+            steps {
+                
+            }
         }
     }
 }
